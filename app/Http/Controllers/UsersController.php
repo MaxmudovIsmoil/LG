@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+//use function GuzzleHttp\Promise\all;
+
 
 
 class UsersController extends Controller
@@ -16,9 +18,22 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users = User::all();;
+        $users = User::all();
+        $users->load('role');
 
-        return view('users.index', compact('users'));
+//        $a = 0;
+//        $u = User::when($a === 0, function($query) use($a) {
+//            $query->where('type', $a);
+//        })->get();
+//        ------------ rewrite ------------
+//        if ($a === 0)
+//            $u = User::all();
+//        else
+//            $u = User::where('type', $a)->get();
+
+        $test = "<b>Salom</b>";
+
+        return view('users.index', compact('users', 'test'));
     }
 
 

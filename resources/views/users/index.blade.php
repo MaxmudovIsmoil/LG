@@ -11,6 +11,9 @@
         <!-- Modal -->
     </div>
 
+        {!!  $test !!}
+
+
     <!-- list section start -->
     <div class="card">
         <table class="table table-striped w-100 table_hover" id="user_datatable">
@@ -42,15 +45,7 @@
                         @endif</td>
                     <td>{{ date('d.m.Y H:i', strtotime($u->created_at)) }}</td>
                     <td>
-                        @if($u->ruleId == 1)
-                            Admin
-                        @elseif($u->ruleId = 2)
-                            Editor
-                        @elseif($u->ruleId = 3)
-                            Promoter
-                        @elseif(in_array($u->ruleId, [1,2,3,4]))
-                            Supervisor
-                        @endif
+                        {{ optional($u->role)->name }}
                     </td>
                     <td class="text-right">
                         <div class="d-flex justify-content-around">

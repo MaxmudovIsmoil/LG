@@ -29,17 +29,18 @@ class CreateUsersTable extends Migration
         });
 
 
-//        \Illuminate\Support\Facades\DB::table('roles')->insert([
-//                'full_name' => 'Administration',
-//                'username'  => 'admin',
-//                'password'  => \Illuminate\Support\Facades\Hash::make('123'),
-//                'phone'     => '+998332087090',
-//                'rule_id'   => '1',
-//                'city_id'   => '1',
-//                'status'    => '1',
-//                'created_at'=> now(),
-//                'updated_at'=> now(),
-//        ]);
+        \Illuminate\Support\Facades\DB::table('users')->insert([
+                'full_name' => 'Administration',
+                'username'  => 'admin',
+                'password'  => \Illuminate\Support\Facades\Hash::make('123'),
+                'phone'     => '+998332087090',
+                'email'     => 'admin@gmail.com',
+//                'rule_id'   => 1,
+                'city_id'   => '1',
+                'status'    => '1',
+                'created_at'=> now(),
+                'updated_at'=> now(),
+        ]);
     }
 
     /**

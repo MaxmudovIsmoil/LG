@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCityRequest;
 use App\Models\City;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class CityController extends Controller
@@ -40,7 +39,7 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCityRequest $request)
     {
         $error = Validator::make($request->all(), ['name' => 'required']);
 
@@ -52,7 +51,7 @@ class CityController extends Controller
         }
         else {
             try {
-                City::create(['name'=> $request->name]);
+                City::create($request->validated());
 
                 return response()->json(['status' => true, 'msg' => 'ok']);
 

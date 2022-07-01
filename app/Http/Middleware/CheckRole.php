@@ -27,10 +27,8 @@ class CheckRole
 
         $roleIds = $roles[$role] ?? [];
 
-        if (in_array(Auth::user()->roleId, $roleIds)) {
-//            abort(403);
+        if (!in_array(Auth::user()->role_id, $roleIds))
            return $this->logoutRedirect();
-        }
 
 
         return $next($request);
